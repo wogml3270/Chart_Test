@@ -1,0 +1,44 @@
+body{
+  background: #cccccc;
+}
+h1{
+  color: #ffffff;
+  text-align: center;
+}
+.container{
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  height: auto;
+  width: 100%;
+  margin: 50px auto;
+}
+
+.main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+}
+
+.top {
+  display: flex;
+  gap: 20px;
+}
+
+.bottom {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.right {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.top > div, .right > div, .bottom > div {
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.25);
+  background-color: #FFFFFF;
+}
+
