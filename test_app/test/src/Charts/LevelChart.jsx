@@ -31,7 +31,7 @@ const LevelChart = ({data, type, ...props}) => {
                  */
                 layout="horizontal"
 
-                keys={['수련생 수']}
+                keys={['value']}
                 /**
                  * keys들을 그룹화하는 index key (분류하는 값)
                  */
@@ -39,7 +39,7 @@ const LevelChart = ({data, type, ...props}) => {
                 /**
                  * chart margin
                  */
-                margin={{ top: 50, right: 50, bottom: 50, left: 80 }}
+                margin={{ top: 50, right: 50, bottom: 50, left: 70 }}
                 /**
                  * chart padding (bar간 간격)
                  */
@@ -89,7 +89,6 @@ const LevelChart = ({data, type, ...props}) => {
                         ticks: {
                             text: {
                                 fontSize: 16,
-                                fontWeight: 600,
                                 fill: '#000000',
                             },
                         },
@@ -99,6 +98,7 @@ const LevelChart = ({data, type, ...props}) => {
                  * axis bottom 설정
                  */
                 axisBottom={{
+                    tickValues: 5, // tick 개수
                     tickSize: 5, // 값 설명하기 위해 튀어나오는 점 크기
                     tickPadding: 5, // tick padding
                     tickRotation: 0, // tick 기울기
@@ -158,7 +158,7 @@ const LevelChart = ({data, type, ...props}) => {
                */
               layout="horizontal"
 
-              keys={['수련생 수']}
+              keys={['value']}
               /**
                * keys들을 그룹화하는 index key (분류하는 값)
                */
@@ -166,7 +166,7 @@ const LevelChart = ({data, type, ...props}) => {
               /**
                * chart margin
                */
-              margin={{ top: 50, right: 50, bottom: 50, left: 80 }}
+              margin={{ top: 50, right: 50, bottom: 50, left: 70 }}
               /**
                * chart padding (bar간 간격)
                */
@@ -226,12 +226,13 @@ const LevelChart = ({data, type, ...props}) => {
                * axis bottom 설정
                */
               axisBottom={{
-                  tickSize: 5, // 값 설명하기 위해 튀어나오는 점 크기
-                  tickPadding: 5, // tick padding
-                  tickRotation: 0, // tick 기울기
-                  legend: false, // bottom 글씨
-                  legendPosition: 'middle', // 글씨 위치
-                  legendOffset: 40, // 글씨와 chart간 간격
+                tickValues: 5, // tick 개수
+                tickSize: 5, // 값 설명하기 위해 튀어나오는 점 크기
+                tickPadding: 5, // tick padding
+                tickRotation: 0, // tick 기울기
+                legend: false, // bottom 글씨
+                legendPosition: 'middle', // 글씨 위치
+                legendOffset: 40, // 글씨와 chart간 간격
               }}
               /**
                * axis left 설정
