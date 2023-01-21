@@ -29,7 +29,7 @@ const BarChart = ({data, ...props}) => {
                 /**
                  * chart에 보여질 데이터 key (측정되는 값)
                  */
-                keys={['수련생 수']}
+                keys={['value']}
                 /**
                  * keys들을 그룹화하는 index key (분류하는 값)
                  */
@@ -50,24 +50,24 @@ const BarChart = ({data, ...props}) => {
                 /**
                  * color 적용 방식
                  */
-                colorBy="id" // 색상을 keys 요소들에 각각 적용
+                colorBy="region" // 색상을 keys 요소들에 각각 적용
                 // colorBy="indexValue" // indexBy로 묵인 인덱스별로 각각 적용
                 theme={{
                     /**
                      * label style (bar에 표현되는 글씨)
                      */
-                    labels: {
-                        text: {
-                            fontSize: 14,
-                            fill: '#000000',
-                        },
-                    },
+                    // labels: {
+                    //     text: {
+                    //         fontSize: 14,
+                    //         fill: '#000000',
+                    //     },
+                    // },
                     /**
                      * legend style (default로 우측 하단에 있는 색상별 key 표시)
                      */
                     legends: {
                         text: {
-                            fontSize: 16,
+                            fontSize: 14,
                             fill: '#000000',
                         },
                     },
@@ -86,9 +86,22 @@ const BarChart = ({data, ...props}) => {
                          */
                         ticks: {
                             text: {
-                                fontSize: 16,
+                                fontSize: 14,
                                 fill: '#000000',
                             },
+                        },
+                        domain: {
+                            line: {
+                                stroke: '#000000',
+                                strokeWidth: 1,
+                            },
+                        },
+                    },
+                    grid: {
+                        line: {
+                          stroke: "#EEEEEE",
+                          strokeWidth: 3,
+                          strokeDasharray: "4 4"
                         },
                     },
                 }}
@@ -96,7 +109,7 @@ const BarChart = ({data, ...props}) => {
                  * axis bottom 설정
                  */
                 axisBottom={{
-                    tickSize: 5, // 값 설명하기 위해 튀어나오는 점 크기
+                    tickSize: 3, // 값 설명하기 위해 튀어나오는 점 크기
                     tickPadding: 5, // tick padding
                     tickRotation: 0, // tick 기울기
                     legend: false, // bottom 글씨
@@ -107,8 +120,9 @@ const BarChart = ({data, ...props}) => {
                  * axis left 설정
                  */
                 axisLeft={{
-                    format: (value) => `${value} 명`, // 값에 단위 붙이기
-                    tickSize: 0, // 값 설명하기 위해 튀어나오는 점 크기
+                    // format: (value) => `${value} 명`, // 값에 단위 붙이기
+                    tickValues: 5, // tick 개수
+                    tickSize: 3, // 값 설명하기 위해 튀어나오는 점 크기
                     tickPadding: 10, // tick padding
                     tickRotation: 0, // tick 기울기
                     //legend: 'price', // left 글씨
@@ -133,33 +147,33 @@ const BarChart = ({data, ...props}) => {
                 borderRadius={5} // legend border radius
                 enableGridX={false} // x축 grid line
                 enableGridY={true} // y축 grid line
-                legends={[
-                    {
-                        dataFrom: 'keys', // 보일 데이터 형태
-                        anchor: 'top-right', // 위치
-                        direction: 'row', // item 그려지는 방향
-                        justify: false, // 글씨, 색상간 간격 justify 적용 여부
-                        translateX: 0, // chart와 X 간격
-                        translateY: -30, // chart와 Y 간격
-                        itemsSpacing: 0, // item간 간격
-                        itemWidth: 100, // item width
-                        itemHeight: 0, // item height
-                        itemDirection: 'left-to-right', // item 내부에 그려지는 방향
-                        itemOpacity: 0.85, // item opacity
-                        symbolSize: 20, // symbol (색상 표기) 크기
-                        symbolShape: 'circle',
-                        effects: [
-                            {
-                                // 추가 효과 설정 (hover하면 item opacity 1로 변경)
-                                on: 'hover',
-                                style: {
-                                    itemOpacity: 0.5,
-                                },
-                            },
-                        ],
-                        onClick: handle.legendClick, // legend 클릭 이벤트
-                    },
-                ]}
+                // legends={[
+                //     {
+                //         dataFrom: 'keys', // 보일 데이터 형태
+                //         anchor: 'top-right', // 위치
+                //         direction: 'row', // item 그려지는 방향
+                //         justify: false, // 글씨, 색상간 간격 justify 적용 여부
+                //         translateX: 0, // chart와 X 간격
+                //         translateY: -30, // chart와 Y 간격
+                //         itemsSpacing: 0, // item간 간격
+                //         itemWidth: 100, // item width
+                //         itemHeight: 0, // item height
+                //         itemDirection: 'left-to-right', // item 내부에 그려지는 방향
+                //         itemOpacity: 0.85, // item opacity
+                //         symbolSize: 20, // symbol (색상 표기) 크기
+                //         symbolShape: 'circle',
+                //         effects: [
+                //             {
+                //                 // 추가 효과 설정 (hover하면 item opacity 1로 변경)
+                //                 on: 'hover',
+                //                 style: {
+                //                     itemOpacity: 0.5,
+                //                 },
+                //             },
+                //         ],
+                //         onClick: handle.legendClick, // legend 클릭 이벤트
+                //     },
+                // ]}
             />
         </div>
     );

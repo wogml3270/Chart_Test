@@ -1,61 +1,61 @@
 export const LevelData1 = [
   { 
     "level": "1급", 
-    "수련생 수": 1
+    "value": 1
   },
   { 
     "level": "2급", 
-    "수련생 수": 2
+    "value": 2
   },
   { 
     "level": "3급", 
-    "수련생 수": 2
+    "value": 2
   },
   { 
     "level": "4급", 
-    "수련생 수": 4
+    "value": 4
   },
   { 
     "level": "5급", 
-    "수련생 수": 8
+    "value": 8
   },
   { 
     "level": "6급", 
-    "수련생 수": 9
+    "value": 9
   },
   { 
     "level": "7급", 
-    "수련생 수": 10
+    "value": 10
   },
   { 
     "level": "8급", 
-    "수련생 수": 12
+    "value": 12
   },
   { 
     "level": "9급", 
-    "수련생 수": 12
+    "value": 12
   },
   { 
     "level": "10급", 
-    "수련생 수": 15
+    "value": 15
   },
   { 
     "level": "11급", 
-    "수련생 수": 16
+    "value": 16
   }
 ]
 
 export const LevelData2 = [
   {
     "level": "3품",
-    "수련생 수": 20
+    "value": 20
   },
   {
     "level": "2품",
-    "수련생 수": 30
+    "value": 30
   },
   {
     "level": "1품",
-    "수련생 수": 50
+    "value": 50
   },
 ]
