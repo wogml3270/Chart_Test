@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import './App.css';
 import BarChart from './Charts/BarChart';
 import { BarData } from './Charts/Data/BarData';
@@ -14,6 +14,34 @@ import { LineData } from './Charts/Data/LineData';
 
 function App() {
 
+  // useEffect(() => {
+  //   PieData.forEach((d) => {
+  //       d.value = Math.round(Math.random() * 100000);
+  //     }
+  //   );
+  //   BarData.forEach((d) => {
+  //       d.value = Math.round(Math.random() * 100000);
+  //     }
+  //   );
+  //   console.log(BarData)
+  //   LineData[0].data.forEach((d) => {
+  //       d.y = Math.round(Math.random() * 100000);
+  //     }
+  //   );
+  //   LevelData1.forEach((d) => {
+  //       d.value = Math.round(Math.random() * 100000);
+  //     }
+  //   );
+  //   LevelData2.forEach((d) => {
+  //       d.value = Math.round(Math.random() * 100000);
+  //     }
+  //   );
+  // }, []);
+
+  console.log(LevelData1)
+
+
+
   return (
     <>
       <h1>React Charts Test App</h1>
@@ -21,7 +49,7 @@ function App() {
       <div className="container">
         <div className="main">
           <div className="top">
-            <LineChart valueFormat={(v) => `${v}명`} data={LineData} />
+            <LineChart data={LineData} />
             <PieChart valueFormat={(v) => `${v}명`} data={PieData} />
           </div>
           <div className="bottom">

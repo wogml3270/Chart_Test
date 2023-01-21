@@ -40,5 +40,6 @@ h1{
 .top > div, .right > div, .bottom > div {
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.25);
   background-color: #FFFFFF;
+  border-radius: 10px;
 }
 
