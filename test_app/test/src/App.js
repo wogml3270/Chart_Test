@@ -14,29 +14,40 @@ import { LineData } from './Charts/Data/LineData';
 
 function App() {
 
-  // useEffect(() => {
-  //   PieData.forEach((d) => {
-  //       d.value = Math.round(Math.random() * 100000);
-  //     }
-  //   );
-  //   BarData.forEach((d) => {
-  //       d.value = Math.round(Math.random() * 100000);
-  //     }
-  //   );
-  //   console.log(BarData)
-  //   LineData[0].data.forEach((d) => {
-  //       d.y = Math.round(Math.random() * 100000);
-  //     }
-  //   );
-  //   LevelData1.forEach((d) => {
-  //       d.value = Math.round(Math.random() * 100000);
-  //     }
-  //   );
-  //   LevelData2.forEach((d) => {
-  //       d.value = Math.round(Math.random() * 100000);
-  //     }
-  //   );
-  // }, []);
+  useEffect(() => {
+    // PieData value 합계
+    const sum1 = PieData.reduce((acc, cur) => {
+      return acc + cur.value;
+    }, 0);
+    // LevelData1 value 합계
+    const sum3 = LevelData1.reduce((acc, cur) => {
+      return acc + cur.value;
+    }
+    , 0);
+    // LevelData2 value 합계
+    const sum4 = LevelData2.reduce((acc, cur) => {
+      return acc + cur.value;
+    }
+    , 0);
+
+    // PieData value를 합계의 퍼센트 값으로 변경
+    PieData.forEach((d) => {
+        d.value = Math.round((d.value / sum1) * 100);
+      }
+    );
+    // LevelData1 value를 합계의 퍼센트 값으로 변경
+    LevelData1.forEach((d) => {
+        d.value = Math.round((d.value / sum3) * 100);
+      }
+    );
+    // LevelData2 value를 합계의 퍼센트 값으로 변경
+    LevelData2.forEach((d) => {
+        d.value = Math.round((d.value / sum4) * 100);
+      }
+    );
+
+
+  }, []);
 
 
 
@@ -48,7 +59,7 @@ function App() {
         <div className="main">
           <div className="top">
             <LineChart data={LineData} />
-            <PieChart valueFormat={(v) => `${v}명`} data={PieData} />
+            <PieChart valueFormat={(v) => `${v}%`} data={PieData} />
           </div>
           <div className="bottom">
             <BarChart valueFormat={(v) => `${v}명`} data={BarData} />
@@ -56,8 +67,8 @@ function App() {
         </div>
 
         <div className="right">
-          <LevelChart valueFormat={(v) => `${v}명`} data={LevelData1} type='급' />
-          <LevelChart valueFormat={(v) => `${v}명`} data={LevelData2} type="품" />
+          <LevelChart valueFormat={(v) => `${v}%`} data={LevelData1} type='급' />
+          <LevelChart valueFormat={(v) => `${v}%`} data={LevelData2} type="품" />
         </div>
       </div>
     </>

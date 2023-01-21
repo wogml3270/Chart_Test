@@ -15,11 +15,24 @@ const LevelChart = ({data, type, ...props}) => {
   if (type === '급') {
     return (
         // chart height 값이 100%이기 때문이 chart를 덮는 마크업 요소에 height 설정
+        <>
         <div style={{ 
           width: '381px', 
           height: '420px',
           margin: '0 auto', 
+          position: 'relative',
           }}>
+            <div style={{
+                color: '#000000',
+                fontSize: '16px',
+                fontWeight: 'bold',
+                position: 'absolute',
+                margin: 0,
+                top: 10,
+                left: 20,
+            }}>
+                급별 수련생 수
+            </div>
             <ResponsiveBar
                 {...props}
                 /**
@@ -137,6 +150,7 @@ const LevelChart = ({data, type, ...props}) => {
                 enableGridY={false} // y축 grid line
             />
         </div>
+        </>
     );
   }
   if(type === '품') 
@@ -146,7 +160,19 @@ const LevelChart = ({data, type, ...props}) => {
         width: '381px', 
         height: '277px',
         margin: '0 auto', 
+        position: 'relative',
         }}>
+            <div style={{
+                color: '#000000',
+                fontSize: '16px',
+                fontWeight: 'bold',
+                position: 'absolute',
+                margin: 0,
+                top: 10,
+                left: 20,
+            }}>
+                품별 수련생 수
+            </div>
           <ResponsiveBar
                 {...props}
               /**

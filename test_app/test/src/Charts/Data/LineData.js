@@ -1,6 +1,6 @@
 export const LineData = [
   {
-    "id": "dd",
+    "id": "monthly",
     "data": [
         {
             "x": "1월",
