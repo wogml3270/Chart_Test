@@ -38,8 +38,6 @@ function App() {
   //   );
   // }, []);
 
-  console.log(LevelData1)
-
 
 
   return (
