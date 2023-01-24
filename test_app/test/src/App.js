@@ -19,18 +19,23 @@ function App() {
 
   useEffect(() => {
     // PieData value 합계
-    const sum1 = PieData.reduce((acc, cur) => {
+    const pieSum = PieData.reduce((acc, cur) => {
+      return acc + cur.value;
+    }, 0);
+
+    // PieData2 value 합계
+    const pieSum2 = PieData2.reduce((acc, cur) => {
       return acc + cur.value;
     }, 0);
 
     // LevelData1 value 합계
-    const sum2 = LevelData1.reduce((acc, cur) => {
+    const levelSum1 = LevelData1.reduce((acc, cur) => {
       return acc + cur.value;
     }
     , 0);
 
     // LevelData2 value 합계
-    const sum3 = LevelData2.reduce((acc, cur) => {
+    const levelSum2 = LevelData2.reduce((acc, cur) => {
       return acc + cur.value;
     }
     , 0);
@@ -38,19 +43,25 @@ function App() {
 
     // PieData value를 합계의 퍼센트 값으로 변경
     PieData.forEach((d) => {
-        d.value = Math.round((d.value / sum1) * 100);
+        d.value = Math.round((d.value / pieSum) * 100);
+      }
+    );
+
+    // PieData2 value를 합계의 퍼센트 값으로 변경
+    PieData2.forEach((d) => {
+        d.value = Math.round((d.value / pieSum2) * 100);
       }
     );
 
     // LevelData1 value를 합계의 퍼센트 값으로 변경
     LevelData1.forEach((d) => {
-        d.value = Math.round((d.value / sum2) * 100);
+        d.value = Math.round((d.value / levelSum1) * 100);
       }
     );
 
     // LevelData2 value를 합계의 퍼센트 값으로 변경
     LevelData2.forEach((d) => {
-        d.value = Math.round((d.value / sum3) * 100);
+        d.value = Math.round((d.value / levelSum2) * 100);
       }
     );
 
