@@ -21,6 +21,7 @@ const LineChart = ({ data, ...props }) => {
       }}>
       <ResponsiveLine
         {...props}
+        onClick={handle.LineClick}
         data={data}
         margin={{ top: 50, right: 50, bottom: 50, left: 80 }}
         xScale={{ type: 'point' }}
