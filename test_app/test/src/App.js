@@ -1,10 +1,11 @@
-import React, { useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import './App.css';
 import BarChart from './Charts/BarChart';
 import { BarData } from './Charts/Data/BarData';
 
 import PieChart from './Charts/PieChart';
 import { PieData } from './Charts/Data/PieData';
+import { PieData2 } from './Charts/Data/PieData2';
 
 import LevelChart from './Charts/LevelChart';
 import { LevelData1, LevelData2 } from './Charts/Data/LevelData';
@@ -14,31 +15,58 @@ import { LineData } from './Charts/Data/LineData';
 
 function App() {
 
-  // useEffect(() => {
-  //   PieData.forEach((d) => {
-  //       d.value = Math.round(Math.random() * 100000);
-  //     }
-  //   );
-  //   BarData.forEach((d) => {
-  //       d.value = Math.round(Math.random() * 100000);
-  //     }
-  //   );
-  //   console.log(BarData)
-  //   LineData[0].data.forEach((d) => {
-  //       d.y = Math.round(Math.random() * 100000);
-  //     }
-  //   );
-  //   LevelData1.forEach((d) => {
-  //       d.value = Math.round(Math.random() * 100000);
-  //     }
-  //   );
-  //   LevelData2.forEach((d) => {
-  //       d.value = Math.round(Math.random() * 100000);
-  //     }
-  //   );
-  // }, []);
+  const [state, setState] = useState(false);
 
-  console.log(LevelData1)
+  useEffect(() => {
+    // PieData value 합계
+    const pieSum = PieData.reduce((acc, cur) => {
+      return acc + cur.value;
+    }, 0);
+
+    // PieData2 value 합계
+    const pieSum2 = PieData2.reduce((acc, cur) => {
+      return acc + cur.value;
+    }, 0);
+
+    // LevelData1 value 합계
+    const levelSum1 = LevelData1.reduce((acc, cur) => {
+      return acc + cur.value;
+    }
+    , 0);
+
+    // LevelData2 value 합계
+    const levelSum2 = LevelData2.reduce((acc, cur) => {
+      return acc + cur.value;
+    }
+    , 0);
+
+
+    // PieData value를 합계의 퍼센트 값으로 변경
+    PieData.forEach((d) => {
+        d.value = Math.round((d.value / pieSum) * 100);
+      }
+    );
+
+    // PieData2 value를 합계의 퍼센트 값으로 변경
+    PieData2.forEach((d) => {
+        d.value = Math.round((d.value / pieSum2) * 100);
+      }
+    );
+
+    // LevelData1 value를 합계의 퍼센트 값으로 변경
+    LevelData1.forEach((d) => {
+        d.value = Math.round((d.value / levelSum1) * 100);
+      }
+    );
+
+    // LevelData2 value를 합계의 퍼센트 값으로 변경
+    LevelData2.forEach((d) => {
+        d.value = Math.round((d.value / levelSum2) * 100);
+      }
+    );
+
+
+  }, []);
 
 
 
@@ -50,7 +78,7 @@ function App() {
         <div className="main">
           <div className="top">
             <LineChart data={LineData} />
-            <PieChart valueFormat={(v) => `${v}명`} data={PieData} />
+            <PieChart valueFormat={(v) => `${v}%`} data={state ? PieData : PieData2 } />
           </div>
           <div className="bottom">
             <BarChart valueFormat={(v) => `${v}명`} data={BarData} />
@@ -58,8 +86,8 @@ function App() {
         </div>
 
         <div className="right">
-          <LevelChart valueFormat={(v) => `${v}명`} data={LevelData1} type='급' />
-          <LevelChart valueFormat={(v) => `${v}명`} data={LevelData2} type="품" />
+          <LevelChart valueFormat={(v) => `${v}%`} data={LevelData1} type='급' />
+          <LevelChart valueFormat={(v) => `${v}%`} data={LevelData2} type="품" />
         </div>
       </div>
     </>
